@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bella Rahman | Video Editor & Director</title>
+  <meta name="description"
+    content="Acclaimed Johannesburg-based video editor and director specialising in branded films, digital campaigns, social video, and cinematic visual storytelling.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/images/bellaes-logo-tv-screen-75-favicon.png">
+  <link rel="stylesheet" href="css/base.css?v=22">
+</head>
+
+<body>
+  <!-- ========== HEADER / NAV ========== -->
+  <header id="site-header">
+    <nav class="nav-container">
+      <a href="index.html" class="nav-logo nav-logo--icon" aria-label="Home">
+        <img class="nav-logo-icon" src="assets/images/bellaes-logo-star-tv-transparent.png" alt="">
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="archive.html" class="nav-link">Work</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ========== HERO SECTION ========== -->
+  <section id="hero" class="hero-section">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        <span class="hero-line">BellAES.</span>
+        <span class="hero-line hero-line--name">Isabel / Bella Rahman</span>
+      </h1>
+      <div class="hero-subtitle">
+        <span class="hero-descriptor">Editing, Direction &amp; Audio/Visual Storytelling</span>
+      </div>
+      <div class="showreel">
+        <video class="showreel-video" autoplay muted loop playsinline preload="metadata" title="Showreel Bella Rahman">
+          <source src="assets/video/bellaes-edit-showreel-final.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SELECTED WORK ========== -->
+  <section id="work" class="work-section">
+    <div class="section-header">
+      <h2 class="section-title">SELECTED WORK</h2>
+      <a href="archive.html" class="view-all-link">Archive <span class="arrow">→</span></a>
+    </div>
+
+    <div class="work-grid" aria-label="Selected project gallery">
+      <div class="work-item work-item--half">
+        <a href="archive.html#directing" class="work-link" data-work-preview>
+          <div class="work-image-wrapper">
+            <video class="work-video" autoplay muted loop playsinline preload="metadata">
+              <source src="assets/video/archive/directing/gxb-is-for-everywhere-online.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="work-meta">
+            <span class="work-client">GXB is for Everywhere</span>
+          </div>
+        </a>
+      </div>
+      <div class="work-item work-item--half">
+        <a href="archive.html#commercial-editing" class="work-link" data-work-preview>
+          <div class="work-image-wrapper">
+            <video class="work-video" autoplay muted loop playsinline preload="metadata">
+              <source src="assets/video/archive/commercial-editing/yoco-back-the-underdog.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="work-meta">
+            <span class="work-client">Back the Underdog</span>
+          </div>
+        </a>
+      </div>
+      <div class="work-item work-item--half">
+        <a href="archive.html#promotional-content" class="work-link" data-work-preview>
+          <div class="work-image-wrapper">
+            <video class="work-video" autoplay muted loop playsinline preload="metadata">
+              <source src="assets/video/archive/promotional-content/young-black-and-excellent-bet-2021.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="work-meta">
+            <span class="work-client">Young Black and Excellent</span>
+          </div>
+        </a>
+      </div>
+      <div class="work-item work-item--half">
+        <a href="archive.html#directing" class="work-link" data-work-preview>
+          <div class="work-image-wrapper">
+            <video class="work-video" autoplay muted loop playsinline preload="metadata">
+              <source src="assets/video/archive/directing/mtv-base-mega-hits.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="work-meta">
+            <span class="work-client">MTV Base Mega Hits</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="work-lightbox" id="work-lightbox" aria-hidden="true">
+    <button class="work-lightbox-close" type="button" aria-label="Close preview">×</button>
+    <div class="work-lightbox-stage" role="dialog" aria-modal="true" aria-label="Selected work preview">
+      <div class="work-lightbox-art" id="work-lightbox-art"></div>
+      <div class="work-lightbox-footer">
+        <p class="work-lightbox-caption" id="work-lightbox-caption"></p>
+        <a class="work-lightbox-more" id="work-lightbox-more" href="archive.html">See more</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== ABOUT SECTION ========== -->
+  <section id="about" class="about-section">
+    <div class="about-grid">
+      <div class="about-image-col">
+        <div class="about-image-wrapper" role="button" tabindex="0" aria-label="Toggle about video sound">
+          <video class="about-video" autoplay muted loop playsinline preload="metadata"
+            aria-label="Bella Rahman about video. Click to toggle sound.">
+            <source src="assets/video/about-website-2025.mp4" type="video/mp4">
+          </video>
+          <span class="about-video-sound">Click for sound</span>
+        </div>
+      </div>
+      <div class="about-content">
+        <p class="about-intro">
+          I'm Bella, an acclaimed Johannesburg-based <b>Video Editor</b> and Director crafting cinematic visual stories.
+        </p>
+        <p class="about-text">
+          <strong>Burning the candle at both ends...</strong> (Edna St. Vincent Millay)
+        </p>
+        <p class="about-text">
+          I constantly strive to shape footage into stories that CONNECT. Whether it's a commercial, promo, or short
+          film, my focus is always the same: finding the whimsy, refining the rhythm, and creating work that feels
+          intentional. <em>Looking forward to connecting and creating with you!</em>
+        </p>
+        <p class="about-label"><b>Say hello:</b></p>
+        <p class="about-detail contact-links">
+          <a class="contact-link contact-link--email" href="contact.html">
+            <svg class="contact-icon email-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+              <path d="m4 7 8 6 8-6"></path>
+            </svg>
+            <span>bellaes.films@gmail.com</span>
+          </a>
+          <span class="contact-divider" aria-hidden="true"></span>
+          <span class="instagram-preview-wrap">
+            <a class="contact-link instagram-link" href="https://www.instagram.com/bellaes.still/" target="_blank" rel="noopener"
+              aria-label="BellaES Instagram">
+              <svg class="instagram-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+                <circle cx="12" cy="12" r="4"></circle>
+                <circle cx="17.5" cy="6.5" r="1.2"></circle>
+              </svg>
+              <span>bellaes.still</span>
+            </a>
+            <span class="instagram-preview" aria-hidden="true">
+              <span class="instagram-preview-top">
+                <img class="instagram-preview-avatar" src="assets/images/instagram-preview/bellaes-avatar.jpg" alt="">
+                <span>
+                  <span class="instagram-preview-name">bellaes.still</span>
+                  <span class="instagram-preview-meta">Instagram profile</span>
+                </span>
+              </span>
+              <img class="instagram-preview-image" src="assets/images/instagram-preview/bellaes-profile.png" alt="">
+              <span class="instagram-preview-url">instagram.com/bellaes.still</span>
+            </span>
+          </span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== LOGO MARQUEE ========== -->
+  <section id="contact" class="footer-info-section">
+    <p class="logo-marquee-heading">Brands I have collaborated with</p>
+    <div class="logo-marquee" aria-label="Client logo scroll">
+      <div class="logo-marquee-track">
+        <img src="assets/images/client-logos/home-clean/istore.png" alt="iStore" class="marquee-logo">
+        <img src="assets/images/client-logos/home-clean/mtv-base.png" alt="MTV Base" class="marquee-logo">
+        <img src="assets/images/client-logos/home-clean/stitch.png" alt="Stitch" class="marquee-logo">
+        <img src="assets/images/client-logos/home-clean/netflix.png" alt="Netflix" class="marquee-logo">
+        <img src="assets/images/client-logos/home-clean/bet.png" alt="BET" class="marquee-logo">
+        <img src="assets/images/client-logos/home-clean/sabc.png" alt="SABC" class="marquee-logo">
+        <img src="assets/images/client-logos/home-clean/galxboy.png" alt="Galxboy" class="marquee-logo">
+        <img src="assets/images/client-logos/home-clean/coca-cola.png" alt="Coca-Cola" class="marquee-logo">
+        <img src="assets/images/client-logos/home-clean/hippo.png" alt="Hippo" class="marquee-logo">
+        <img src="assets/images/client-logos/home-clean/yoco.png" alt="Yoco" class="marquee-logo">
+        <img src="assets/images/client-logos/home-clean/nike.png" alt="Nike" class="marquee-logo">
+        <img src="assets/images/client-logos/home-clean/naked.png" alt="Naked" class="marquee-logo">
+        <img src="assets/images/client-logos/home-clean/nedbank.png" alt="Nedbank" class="marquee-logo">
+        <img src="assets/images/client-logos/home-clean/hunters.png" alt="Hunter's" class="marquee-logo">
+        <img src="assets/images/client-logos/home-clean/discovery.png" alt="Discovery" class="marquee-logo">
+        <img src="assets/images/client-logos/home-clean/reboost.png" alt="Reboost Energy" class="marquee-logo">
+        <img src="assets/images/client-logos/home-clean/nickelodeon.png" alt="Nickelodeon" class="marquee-logo">
+        <img src="assets/images/client-logos/home-clean/telkom.png" alt="Telkom" class="marquee-logo">
+        <img src="assets/images/client-logos/home-clean/viacom.png" alt="Viacom" class="marquee-logo">
+        <img src="assets/images/client-logos/home-clean/istore.png" alt="" class="marquee-logo" aria-hidden="true">
+        <img src="assets/images/client-logos/home-clean/mtv-base.png" alt="" class="marquee-logo" aria-hidden="true">
+        <img src="assets/images/client-logos/home-clean/stitch.png" alt="" class="marquee-logo" aria-hidden="true">
+        <img src="assets/images/client-logos/home-clean/netflix.png" alt="" class="marquee-logo" aria-hidden="true">
+        <img src="assets/images/client-logos/home-clean/bet.png" alt="" class="marquee-logo" aria-hidden="true">
+        <img src="assets/images/client-logos/home-clean/sabc.png" alt="" class="marquee-logo" aria-hidden="true">
+        <img src="assets/images/client-logos/home-clean/galxboy.png" alt="" class="marquee-logo" aria-hidden="true">
+        <img src="assets/images/client-logos/home-clean/coca-cola.png" alt="" class="marquee-logo" aria-hidden="true">
+        <img src="assets/images/client-logos/home-clean/hippo.png" alt="" class="marquee-logo" aria-hidden="true">
+        <img src="assets/images/client-logos/home-clean/yoco.png" alt="" class="marquee-logo" aria-hidden="true">
+        <img src="assets/images/client-logos/home-clean/nike.png" alt="" class="marquee-logo" aria-hidden="true">
+        <img src="assets/images/client-logos/home-clean/naked.png" alt="" class="marquee-logo" aria-hidden="true">
+        <img src="assets/images/client-logos/home-clean/nedbank.png" alt="" class="marquee-logo" aria-hidden="true">
+        <img src="assets/images/client-logos/home-clean/hunters.png" alt="" class="marquee-logo" aria-hidden="true">
+        <img src="assets/images/client-logos/home-clean/discovery.png" alt="" class="marquee-logo" aria-hidden="true">
+        <img src="assets/images/client-logos/home-clean/reboost.png" alt="" class="marquee-logo" aria-hidden="true">
+        <img src="assets/images/client-logos/home-clean/nickelodeon.png" alt="" class="marquee-logo" aria-hidden="true">
+        <img src="assets/images/client-logos/home-clean/telkom.png" alt="" class="marquee-logo" aria-hidden="true">
+        <img src="assets/images/client-logos/home-clean/viacom.png" alt="" class="marquee-logo" aria-hidden="true">
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer id="site-footer" class="site-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <span class="footer-copyright">©2026 Bella Rahman</span>
+      </div>
+      <div class="footer-right">
+        <div class="contact-links contact-links--footer">
+          <a class="contact-link contact-link--email" href="contact.html">
+            <svg class="contact-icon email-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+              <path d="m4 7 8 6 8-6"></path>
+            </svg>
+            <span>bellaes.films@gmail.com</span>
+          </a>
+          <span class="contact-divider" aria-hidden="true"></span>
+          <span class="instagram-preview-wrap instagram-preview-wrap--footer">
+            <a class="contact-link instagram-link" href="https://www.instagram.com/bellaes.still/" target="_blank" rel="noopener"
+              aria-label="BellaES Instagram">
+              <svg class="instagram-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+                <circle cx="12" cy="12" r="4"></circle>
+                <circle cx="17.5" cy="6.5" r="1.2"></circle>
+              </svg>
+              <span>bellaes.still</span>
+            </a>
+            <span class="instagram-preview" aria-hidden="true">
+              <span class="instagram-preview-top">
+                <img class="instagram-preview-avatar" src="assets/images/instagram-preview/bellaes-avatar.jpg" alt="">
+                <span>
+                  <span class="instagram-preview-name">bellaes.still</span>
+                  <span class="instagram-preview-meta">Instagram profile</span>
+                </span>
+              </span>
+              <img class="instagram-preview-image" src="assets/images/instagram-preview/bellaes-profile.png" alt="">
+              <span class="instagram-preview-url">instagram.com/bellaes.still</span>
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=8"></script>
+</body>
+
+</html>
