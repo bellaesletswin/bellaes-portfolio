@@ -253,7 +253,7 @@ img {
   aspect-ratio: 16 / 5;
   object-fit: cover;
   border-radius: 3px;
-  background-color: var(--color-black);
+  background-color: var(--color-bg);
 }
 
 /* ===================================
@@ -490,6 +490,7 @@ img {
   display: block;
   position: relative;
   z-index: 2;
+  background-color: var(--color-bg);
 }
 
 .gallery-item:hover .gallery-img {

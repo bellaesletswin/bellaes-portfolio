@@ -314,7 +314,7 @@ img {
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
-  background: #000;
+  background: var(--color-bg);
 }
 
 /* ===================================
@@ -550,7 +550,7 @@ body.work-lightbox-open {
   overflow: hidden;
   aspect-ratio: 9 / 16;
   border-radius: 4px;
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: var(--color-bg);
   cursor: pointer;
 }
 
@@ -561,7 +561,7 @@ body.work-lightbox-open {
   height: 100%;
   aspect-ratio: 9 / 16;
   object-fit: contain;
-  background: #000;
+  background: var(--color-bg);
 }
 
 .about-video-sound {

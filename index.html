@@ -12,8 +12,8 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet">
-  <link rel="icon" type="image/png" href="assets/images/bellaes-logo-tv-screen-75-favicon.png">
-  <link rel="stylesheet" href="css/base.css?v=22">
+  <link rel="icon" type="image/png" href="assets/images/bellaes-logo-tv-screen-small-favicon.png">
+  <link rel="stylesheet" href="css/base.css?v=23">
 </head>
 
 <body>
@@ -43,7 +43,7 @@
         <span class="hero-descriptor">Editing, Direction &amp; Audio/Visual Storytelling</span>
       </div>
       <div class="showreel">
-        <video class="showreel-video" autoplay muted loop playsinline preload="metadata" title="Showreel Bella Rahman">
+        <video class="showreel-video" autoplay muted loop playsinline controls preload="auto" title="Showreel Bella Rahman">
           <source src="assets/video/bellaes-edit-showreel-final.mp4" type="video/mp4">
         </video>
       </div>
@@ -61,7 +61,7 @@
       <div class="work-item work-item--half">
         <a href="archive.html#directing" class="work-link" data-work-preview>
           <div class="work-image-wrapper">
-            <video class="work-video" autoplay muted loop playsinline preload="metadata">
+            <video class="work-video" muted loop playsinline preload="metadata">
               <source src="assets/video/archive/directing/gxb-is-for-everywhere-online.mp4" type="video/mp4">
             </video>
           </div>
@@ -73,7 +73,7 @@
       <div class="work-item work-item--half">
         <a href="archive.html#commercial-editing" class="work-link" data-work-preview>
           <div class="work-image-wrapper">
-            <video class="work-video" autoplay muted loop playsinline preload="metadata">
+            <video class="work-video" muted loop playsinline preload="metadata">
               <source src="assets/video/archive/commercial-editing/yoco-back-the-underdog.mp4" type="video/mp4">
             </video>
           </div>
@@ -85,7 +85,7 @@
       <div class="work-item work-item--half">
         <a href="archive.html#promotional-content" class="work-link" data-work-preview>
           <div class="work-image-wrapper">
-            <video class="work-video" autoplay muted loop playsinline preload="metadata">
+            <video class="work-video" muted loop playsinline preload="metadata">
               <source src="assets/video/archive/promotional-content/young-black-and-excellent-bet-2021.mp4" type="video/mp4">
             </video>
           </div>
@@ -97,7 +97,7 @@
       <div class="work-item work-item--half">
         <a href="archive.html#directing" class="work-link" data-work-preview>
           <div class="work-image-wrapper">
-            <video class="work-video" autoplay muted loop playsinline preload="metadata">
+            <video class="work-video" muted loop playsinline preload="metadata">
               <source src="assets/video/archive/directing/mtv-base-mega-hits.mp4" type="video/mp4">
             </video>
           </div>
@@ -125,9 +125,9 @@
     <div class="about-grid">
       <div class="about-image-col">
         <div class="about-image-wrapper" role="button" tabindex="0" aria-label="Toggle about video sound">
-          <video class="about-video" autoplay muted loop playsinline preload="metadata"
+          <video class="about-video" muted loop playsinline preload="none"
             aria-label="Bella Rahman about video. Click to toggle sound.">
-            <source src="assets/video/about-website-2025.mp4" type="video/mp4">
+            <source data-src="assets/video/about-website-2025.mp4" type="video/mp4">
           </video>
           <span class="about-video-sound">Click for sound</span>
         </div>
@@ -271,7 +271,7 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=8"></script>
+  <script src="js/main.js?v=11"></script>
 </body>
 
 </html>

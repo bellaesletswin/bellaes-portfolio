@@ -74,37 +74,77 @@ function initShowreelAutoplay() {
   if (!video) return;
 
   video.muted = true;
+  video.volume = 0;
   video.playsInline = true;
-  video.controls = false;
+  video.controls = true;
 
-  const showControls = () => {
-    video.controls = true;
-  };
-
-  const showControlsAndPlay = () => {
-    showControls();
+  const playMuted = async () => {
+    await primeVideoFrame(video);
     if (video.paused) {
       video.play().catch(() => {});
     }
-    window.setTimeout(() => {
-      if (video.paused) {
-        video.play().catch(() => {});
-      }
-    }, 120);
   };
 
-  video.addEventListener('pointerenter', showControls, { once: true });
-  video.addEventListener('focus', showControls, { once: true });
-  video.addEventListener('touchstart', showControlsAndPlay, { once: true, passive: true });
-  video.addEventListener('click', (event) => {
-    event.preventDefault();
-    showControlsAndPlay();
-  }, { once: true });
+  playMuted();
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) playMuted();
+  });
+}
 
-  const playPromise = video.play();
-  if (playPromise) {
-    playPromise.catch(() => {});
-  }
+function primeVideoFrame(video) {
+  const startOffset = 0.18;
+  if (video.dataset.primed === 'true') return Promise.resolve();
+
+  return new Promise(resolve => {
+    let timeoutId = null;
+
+    const finish = () => {
+      window.clearTimeout(timeoutId);
+      video.removeEventListener('loadedmetadata', prime);
+      video.removeEventListener('seeked', finish);
+      video.dataset.primed = 'true';
+      resolve();
+    };
+
+    const prime = () => {
+      if (!Number.isFinite(video.duration) || video.duration <= startOffset + 0.1) {
+        finish();
+        return;
+      }
+
+      try {
+        if (video.currentTime < 0.05) {
+          video.addEventListener('seeked', finish, { once: true });
+          video.currentTime = startOffset;
+          timeoutId = window.setTimeout(finish, 700);
+        } else {
+          finish();
+        }
+      } catch {
+        finish();
+      }
+    };
+
+    if (video.readyState >= 1) {
+      prime();
+    } else {
+      video.addEventListener('loadedmetadata', prime, { once: true });
+      timeoutId = window.setTimeout(finish, 1200);
+    }
+  });
+}
+
+function loadDeferredVideo(video) {
+  const sources = video.querySelectorAll('source[data-src]');
+  if (!sources.length) return video.currentSrc || video.querySelector('source')?.src || '';
+
+  sources.forEach(source => {
+    source.src = source.dataset.src;
+    source.removeAttribute('data-src');
+  });
+  video.load();
+
+  return video.querySelector('source')?.src || '';
 }
 
 /* ===========================
@@ -120,19 +160,40 @@ function initSelectedWorkPreview() {
 
   if (!lightbox || !lightboxArt || !lightboxCaption || !seeMore || !closeButton || !workLinks.length) return;
 
-  document.querySelectorAll('.work-video').forEach(video => {
+  const workVideos = document.querySelectorAll('.work-video');
+
+  workVideos.forEach(video => {
     video.muted = true;
     video.volume = 0;
+    video.preload = 'metadata';
   });
 
+  const playPreview = async link => {
+    const video = link.querySelector('.work-video');
+    if (!video) return;
+
+    loadDeferredVideo(video);
+    video.muted = true;
+    video.volume = 0;
+    await primeVideoFrame(video);
+    video.play().catch(() => {});
+  };
+
+  const pausePreview = link => {
+    const video = link.querySelector('.work-video');
+    if (!video || video.paused) return;
+
+    video.pause();
+  };
+
   function openPreview(link) {
-    document.querySelectorAll('.work-video').forEach(video => {
+    workVideos.forEach(video => {
       video.muted = true;
       video.volume = 0;
     });
 
     const thumbVideo = link.querySelector('video');
-    const source = thumbVideo?.currentSrc || thumbVideo?.querySelector('source')?.src;
+    const source = thumbVideo ? loadDeferredVideo(thumbVideo) : '';
     const label = link.querySelector('.work-client')?.textContent || 'Selected work';
 
     if (!source) return;
@@ -155,7 +216,7 @@ function initSelectedWorkPreview() {
     document.body.classList.add('work-lightbox-open');
     closeButton.focus();
 
-    previewVideo.play().catch(() => {
+    primeVideoFrame(previewVideo).then(() => previewVideo.play()).catch(() => {
       previewVideo.muted = true;
       previewVideo.volume = 0;
       previewVideo.play().catch(() => {});
@@ -175,6 +236,10 @@ function initSelectedWorkPreview() {
   }
 
   workLinks.forEach(link => {
+    link.addEventListener('pointerenter', () => playPreview(link));
+    link.addEventListener('pointerleave', () => pausePreview(link));
+    link.addEventListener('focusin', () => playPreview(link));
+    link.addEventListener('focusout', () => pausePreview(link));
     link.addEventListener('click', event => {
       event.preventDefault();
       openPreview(link);
@@ -202,9 +267,43 @@ function initAboutVideoSound() {
 
   video.muted = true;
   video.volume = 0;
+  video.preload = 'none';
+
+  const playMuted = async () => {
+    loadDeferredVideo(video);
+    video.muted = true;
+    video.volume = 0;
+
+    try {
+      await primeVideoFrame(video);
+      await video.play();
+    } catch {
+      wrapper.classList.remove('is-sound-on');
+    }
+  };
+
+  const pauseMuted = () => {
+    if (!video.muted) return;
+    video.pause();
+  };
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        playMuted();
+      } else {
+        pauseMuted();
+      }
+    });
+  }, {
+    threshold: 0.35
+  });
+
+  observer.observe(wrapper);
 
   const toggleSound = async () => {
     const shouldUnmute = video.muted;
+    loadDeferredVideo(video);
 
     video.muted = !shouldUnmute;
     video.volume = shouldUnmute ? 1 : 0;
@@ -212,6 +311,7 @@ function initAboutVideoSound() {
 
     if (video.paused) {
       try {
+        await primeVideoFrame(video);
         await video.play();
       } catch {
         video.muted = true;
