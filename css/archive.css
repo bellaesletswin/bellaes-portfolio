@@ -883,11 +883,29 @@ img {
     --nav-height: 68px;
     --spacing-xl: 3rem;
     --spacing-md: 1.25rem;
+    --site-margin: clamp(1rem, 5vw, 1.5rem);
+  }
+
+  .nav-container {
+    gap: 0.75rem;
   }
 
   .nav-logo--icon {
     width: 65px;
     height: 65px;
+  }
+
+  .nav-links {
+    gap: clamp(0.65rem, 3vw, 1rem);
+  }
+
+  .nav-link {
+    font-size: clamp(0.66rem, 2.7vw, 0.78rem);
+    letter-spacing: 0.035em;
+  }
+
+  .breadcrumb-bar {
+    padding-top: calc(var(--nav-height) + 0.75rem);
   }
 
   .archive-intro-inner {
@@ -917,6 +935,24 @@ img {
     gap: var(--spacing-md);
   }
 
+  .archive-category {
+    scroll-margin-top: calc(var(--nav-height) + 4rem);
+  }
+
+  .archive-category h2,
+  .more-works-title {
+    font-size: clamp(2.1rem, 13vw, 4.2rem);
+    line-height: 0.94;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .archive-category p {
+    max-width: 100%;
+    font-size: clamp(0.92rem, 3.8vw, 1rem);
+    line-height: 1.65;
+  }
+
   .archive-banner {
     padding-top: var(--spacing-sm);
   }
@@ -935,8 +971,15 @@ img {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .category-work-grid,
+  .category-work-grid--three {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
   .category-work-grid--social {
-    grid-template-columns: repeat(5, minmax(112px, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    overflow-x: visible;
   }
 
   .archive-description {
@@ -954,8 +997,46 @@ img {
    RESPONSIVE — SMALL MOBILE (≤ 480px)
    =================================== */
 @media (max-width: 480px) {
+  .nav-container {
+    padding-right: 0.75rem;
+  }
+
+  .nav-logo--icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .nav-links {
+    gap: 0.55rem;
+  }
+
+  .nav-link {
+    font-size: 0.62rem;
+  }
+
+  .archive-tabs {
+    top: var(--nav-height);
+    padding-left: var(--site-margin);
+    padding-right: var(--site-margin);
+  }
+
+  .archive-tabs a {
+    min-height: 32px;
+    padding: 0.48rem 0.58rem;
+    font-size: 0.58rem;
+  }
+
   .archive-gallery-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 4px;
+  }
+
+  .category-work-grid,
+  .category-work-grid--three {
+    gap: 0.6rem;
+  }
+
+  .category-work-grid--social {
+    gap: 0.5rem;
   }
 }
