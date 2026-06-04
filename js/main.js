@@ -78,8 +78,7 @@ function initShowreelAutoplay() {
   video.playsInline = true;
   video.controls = true;
 
-  const playMuted = async () => {
-    await primeVideoFrame(video);
+  const playMuted = () => {
     if (video.paused) {
       video.play().catch(() => {});
     }
