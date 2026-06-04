@@ -74,7 +74,7 @@ function initShowreelAutoplay() {
   if (!video) return;
 
   video.muted = true;
-  video.volume = 0;
+  video.volume = 1;
   video.playsInline = true;
   video.controls = true;
 

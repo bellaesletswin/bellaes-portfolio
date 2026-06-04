@@ -423,6 +423,7 @@ img {
 
 .category-work-thumb .gallery-video {
   object-fit: contain;
+  background-color: var(--color-black);
 }
 
 /* ===================================
