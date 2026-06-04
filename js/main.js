@@ -92,31 +92,35 @@ function initShowreelAutoplay() {
 }
 
 function primeVideoFrame(video) {
-  const startOffset = 0.18;
+  const startOffset = 1;
   if (video.dataset.primed === 'true') return Promise.resolve();
 
   return new Promise(resolve => {
     let timeoutId = null;
 
-    const finish = () => {
+    const finish = (isPrimed = true) => {
       window.clearTimeout(timeoutId);
       video.removeEventListener('loadedmetadata', prime);
       video.removeEventListener('seeked', finish);
-      video.dataset.primed = 'true';
+      if (isPrimed) {
+        video.dataset.primed = 'true';
+      }
       resolve();
     };
 
     const prime = () => {
-      if (!Number.isFinite(video.duration) || video.duration <= startOffset + 0.1) {
+      if (!Number.isFinite(video.duration) || video.duration <= 0.2) {
         finish();
         return;
       }
 
+      const targetTime = Math.min(startOffset, Math.max(0.1, video.duration - 0.1));
+
       try {
-        if (video.currentTime < 0.05) {
+        if (video.currentTime < targetTime - 0.05) {
           video.addEventListener('seeked', finish, { once: true });
-          video.currentTime = startOffset;
-          timeoutId = window.setTimeout(finish, 700);
+          video.currentTime = targetTime;
+          timeoutId = window.setTimeout(finish, 900);
         } else {
           finish();
         }
@@ -129,7 +133,7 @@ function primeVideoFrame(video) {
       prime();
     } else {
       video.addEventListener('loadedmetadata', prime, { once: true });
-      timeoutId = window.setTimeout(finish, 1200);
+      timeoutId = window.setTimeout(() => finish(false), 2000);
     }
   });
 }
@@ -166,6 +170,7 @@ function initSelectedWorkPreview() {
     video.muted = true;
     video.volume = 0;
     video.preload = 'metadata';
+    primeVideoFrame(video);
   });
 
   const playPreview = async link => {
