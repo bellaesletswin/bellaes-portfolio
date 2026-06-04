@@ -1036,6 +1036,19 @@ body.work-lightbox-open {
   border-color: var(--contact-orange);
 }
 
+.contact-form button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.contact-form-status {
+  min-height: 1.2em;
+  margin: 0;
+  color: var(--color-black);
+  font-size: clamp(0.78rem, 1.4vw, 0.9rem);
+  line-height: 1.35;
+}
+
 .contact-thank-you {
   min-height: 100%;
   display: flex;

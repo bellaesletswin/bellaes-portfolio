@@ -3,8 +3,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const form = document.querySelector('.contact-form');
   const thankVideo = document.querySelector('.contact-thank-video');
   const anotherButton = document.querySelector('.contact-another-message');
+  const submitButton = form?.querySelector('button[type="submit"]');
+  const statusMessage = form?.querySelector('.contact-form-status');
 
-  if (!panel || !form || !thankVideo || !anotherButton) return;
+  if (!panel || !form || !thankVideo || !anotherButton || !submitButton || !statusMessage) return;
 
   const workVideos = [
     'assets/video/archive/directing/gxb-is-for-everywhere-online.mp4',
@@ -29,29 +31,35 @@ document.addEventListener('DOMContentLoaded', () => {
     thankVideo.play().catch(() => {});
   };
 
-  const buildMailto = () => {
-    const formData = new FormData(form);
-    const name = String(formData.get('Name') || '').trim();
-    const email = String(formData.get('Email') || '').trim();
-    const message = String(formData.get('Message') || '').trim();
-    const subject = name ? `Website message from ${name}` : 'Website message';
-    const bodyLines = [];
-    if (name) bodyLines.push(`Name: ${name}`);
-    if (email) bodyLines.push(`Email: ${email}`);
-    bodyLines.push('', message);
-
-    return `mailto:bellaes.films@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
-  };
-
-  form.addEventListener('submit', event => {
+  form.addEventListener('submit', async event => {
     event.preventDefault();
 
     if (!form.reportValidity()) return;
 
-    playRandomWork();
-    panel.classList.add('is-sent');
-    anotherButton.focus();
-    window.location.href = buildMailto();
+    submitButton.disabled = true;
+    submitButton.textContent = 'Sending...';
+    statusMessage.textContent = '';
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: {
+          Accept: 'application/json'
+        }
+      });
+
+      if (!response.ok) throw new Error('Message could not be sent');
+
+      playRandomWork();
+      panel.classList.add('is-sent');
+      anotherButton.focus();
+    } catch (error) {
+      statusMessage.textContent = 'Message could not send. Please email bellaes.films@gmail.com directly.';
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = 'Send Message';
+    }
   });
 
   anotherButton.addEventListener('click', () => {
@@ -60,6 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
     thankVideo.removeAttribute('src');
     thankVideo.load();
     form.reset();
+    statusMessage.textContent = '';
     form.querySelector('input, textarea, button')?.focus();
   });
 });
