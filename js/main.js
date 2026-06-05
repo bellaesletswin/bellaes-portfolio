@@ -168,8 +168,7 @@ function initSelectedWorkPreview() {
   workVideos.forEach(video => {
     video.muted = true;
     video.volume = 0;
-    video.preload = 'metadata';
-    primeVideoFrame(video);
+    video.preload = 'none';
   });
 
   const playPreview = async link => {
@@ -179,7 +178,7 @@ function initSelectedWorkPreview() {
     loadDeferredVideo(video);
     video.muted = true;
     video.volume = 0;
-    await primeVideoFrame(video);
+    video.preload = 'auto';
     video.play().catch(() => {});
   };
 
