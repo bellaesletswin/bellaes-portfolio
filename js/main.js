@@ -276,9 +276,9 @@ function initAboutVideoSound() {
     loadDeferredVideo(video);
     video.muted = true;
     video.volume = 0;
+    video.preload = 'auto';
 
     try {
-      await primeVideoFrame(video);
       await video.play();
     } catch {
       wrapper.classList.remove('is-sound-on');
@@ -314,7 +314,6 @@ function initAboutVideoSound() {
 
     if (video.paused) {
       try {
-        await primeVideoFrame(video);
         await video.play();
       } catch {
         video.muted = true;
